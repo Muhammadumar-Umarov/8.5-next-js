@@ -27,13 +27,13 @@ interface Recipe {
 
 interface Props {
   params: {
-    recipesDetail: string
+    recipesDetail: any
   }
 }
 
-const RecipesDetail = async ({ params }: Props) => {
-  const id = await params.recipesDetail
-
+export default async function RecipesDetail({ params }: { params: Promise<{ recipesDetail: string }> }) {
+  const { recipesDetail } = await params;
+  const id = (await params).recipesDetail
   try {
     const data = await fetch(`https://dummyjson.com/recipes/${id}`)
 
@@ -131,7 +131,7 @@ const RecipesDetail = async ({ params }: Props) => {
             </div>
           </Card>
 
-         
+
         </div>
       </div>
     )
@@ -150,4 +150,3 @@ const RecipesDetail = async ({ params }: Props) => {
   }
 }
 
-export default RecipesDetail

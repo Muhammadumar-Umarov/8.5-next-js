@@ -54,8 +54,9 @@ interface Props {
   }
 }
 
-const UsersDetail = async ({ params }: Props) => {
-  const id = await params.usersDetail
+export default async function UsersDetail({ params }: { params: Promise<{ usersDetail: string }> }) {
+  const { usersDetail } = await params;
+  const id = (await params).usersDetail
 
   try {
     const data = await fetch(`https://dummyjson.com/users/${id}`)
@@ -231,4 +232,3 @@ const UsersDetail = async ({ params }: Props) => {
   }
 }
 
-export default UsersDetail
