@@ -27,8 +27,9 @@ interface Props {
   }
 }
 
-const ProductDetail = async ({ params }: Props) => {
-  const id = await params.homeID
+export default async function ProductDetail({ params }: { params: Promise<{ detail: string }> }) {
+  const { detail } = await params;
+  const id = (await params).detail
 
   try {
     const data = await fetch(`https://dummyjson.com/products/${id}`)
@@ -145,4 +146,3 @@ const ProductDetail = async ({ params }: Props) => {
   }
 }
 
-export default ProductDetail
