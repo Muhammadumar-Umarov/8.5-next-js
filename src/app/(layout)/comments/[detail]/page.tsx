@@ -25,8 +25,9 @@ interface Props {
   }
 }
 
-const CommentsDetail = async ({ params }: Props) => {
-  const id = await params.detail
+export default async function CommentsDetail({ params }: { params: Promise<{ detail: string }> }) {
+  const { detail } = await params;
+  const id = (await params).detail
 
   try {
     const data = await fetch(`https://dummyjson.com/comments/${id}`)
@@ -121,5 +122,3 @@ const CommentsDetail = async ({ params }: Props) => {
     )
   }
 }
-
-export default CommentsDetail
