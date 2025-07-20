@@ -21,7 +21,7 @@ interface Comment {
 
 interface Props {
   params: {
-    detail: string
+    detail: any
   }
 }
 
