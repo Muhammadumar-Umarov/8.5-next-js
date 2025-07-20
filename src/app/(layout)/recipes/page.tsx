@@ -11,7 +11,7 @@ const Recipe = async () => {
   const data = await fetch('https://dummyjson.com/recipes')
   const recipes = await data.json()
   return (
-    <div>
+    <div className='container mx-auto'>
       <Title title={"Recipes"} />
       <RecipesView data={recipes?.recipes} />
     </div>

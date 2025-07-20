@@ -10,7 +10,7 @@ const RecipesView = ({ data }: { data: any }) => {
         scrollTo(0, 0)
     }
     return (
-        <div className='grid grid-cols-4 gap-6'>
+        <div className='grid grid-cols-4 gap-6 container mx-auto'>
             {
                 data?.map((i: any) => (
                     <div key={i.id} className='border h-[300px] relative flex flex-col items-center py-4 px-2'>
