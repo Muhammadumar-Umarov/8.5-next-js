@@ -10,6 +10,11 @@ interface Props {
 
 const ProductView: FC<Props> = ({ data }) => {
   const router = useRouter()
+
+  const handleNavigate = (id: string) => {
+    router.push(`product/${id}`)
+    scrollTo(0,0)
+  }
   return (
     <div className='grid grid-cols-4 gap-6'>
       {
@@ -26,7 +31,7 @@ const ProductView: FC<Props> = ({ data }) => {
                 i?.title
               }
             </p>
-            <Button onClick={() => router.push(`product/${i.id}`)} style={{ width: "100%" }} type='primary'>Details</Button>
+            <Button onClick={() => handleNavigate(i.id)} style={{ width: "100%" }} type='primary'>Details</Button>
           </div>
         ))
       }

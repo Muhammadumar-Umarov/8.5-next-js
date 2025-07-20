@@ -5,6 +5,10 @@ import React from 'react'
 
 const RecipesView = ({ data }: { data: any }) => {
     const router = useRouter()
+    const handleNavigate = (id: string) => {
+        router.push(`recipes/${id}`)
+        scrollTo(0, 0)
+    }
     return (
         <div className='grid grid-cols-4 gap-6'>
             {
@@ -13,8 +17,8 @@ const RecipesView = ({ data }: { data: any }) => {
                         <div className='w-full h-[180px] '>
                             <img src={i?.image} className='object-contain w-full h-full' alt="" />
                         </div>
-                        <p className='text-center text-lg font-semibold mt-2 mb-1.5' style={{ height: "50px" }}>{i?.name }</p>
-                        <Button onClick={() => router.push(`recipes/${i.id}`)} style={{ width: "100%" }} type='primary'>Details</Button>
+                        <p className='text-center text-lg font-semibold mt-2 mb-1.5' style={{ height: "50px" }}>{i?.name}</p>
+                        <Button onClick={() =>handleNavigate(i.id)} style={{ width: "100%" }} type='primary'>Details</Button>
                     </div>
                 ))
             }

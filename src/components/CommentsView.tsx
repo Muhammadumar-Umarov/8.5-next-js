@@ -5,6 +5,11 @@ import React from 'react'
 
 const CommentsView = ({ data }: { data: any }) => {
     const router = useRouter()
+
+    const handleNavigate = (id:string) => {
+        scrollTo(0,0)
+        router.push(`/comments/${id}`)
+    }
     return (
         <div className='container mx-auto grid grid-cols-4 gap-6'>
             {
@@ -18,7 +23,8 @@ const CommentsView = ({ data }: { data: any }) => {
                         {
                             <p className='flex-1/2'>User ID: {i?.user?.id}</p>
                         }
-                        <Button onClick={() => router.push(`/comments/${i.id}`)} style={{ width: "100%" }} type='primary'>Save</Button>
+                        <Button onClick={() => handleNavigate(i.id)} style={{ width: "100%" }} type='primary'>Save</Button>
+                        
                     </div>
                 ))
             }
